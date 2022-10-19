@@ -5,7 +5,7 @@ terraform {
     organization = "lsw4701" ##
 
     workspaces {
-      name = "terraform-lab-network"
+      name = "terraform-lab-openvpn"
     }
   }
  

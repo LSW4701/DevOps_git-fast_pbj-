@@ -13,7 +13,7 @@ module "sg__ssh" {
       from_port   = 22
       to_port     = 22
       cidr_blocks = ["0.0.0.0/0"]
-      description = "Allow SSH from anywhere."
+      description = "Allow SSH from anywhere. lsw"
     },
   ]
   egress_rules = []
@@ -35,8 +35,8 @@ module "sg__openvpn" {
       id          = "openvpn/all"
       protocol    = "udp"
       from_port   = 1194
-      to_port     = 1194
-      cidr_blocks = ["0.0.0.0/0"]
+      to_port     = 1194  # open vpn  port 
+      cidr_blocks = ["0.0.0.0/0"] # 외부에서 전부 접근 가능 
       description = "Allow OpenVPN from anywhere."
     },
   ]
