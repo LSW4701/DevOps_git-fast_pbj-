@@ -1,4 +1,4 @@
-variable "name" {
+variable "name" {  # AWS 계정 관련 변수들 선언 가능 
   description = "The name for the AWS account. Used for the account alias."
   type        = string
 }

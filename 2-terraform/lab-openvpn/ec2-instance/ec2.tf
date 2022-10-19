@@ -17,8 +17,8 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "private" {
   ami           = data.aws_ami.ubuntu.image_id
   instance_type = "t2.micro"
-  subnet_id     = local.subnet_groups["private"].ids[0]
-  key_name      = "fastcampus"
+  subnet_id     = local.subnet_groups["private"].ids[0] # remote state 에서 가져온 local의 subnetgroup의 ids[0]   
+  key_name      = "linux1" #
 
   vpc_security_group_ids = [
     module.sg__ssh.id,
@@ -43,7 +43,7 @@ resource "aws_instance" "openvpn" {
   ami           = data.aws_ami.ubuntu.image_id
   instance_type = "t2.micro"
   subnet_id     = local.subnet_groups["public"].ids[0]
-  key_name      = "fastcampus"
+  key_name      = "linux1" #
 
   user_data = local.openvpn_userdata
 

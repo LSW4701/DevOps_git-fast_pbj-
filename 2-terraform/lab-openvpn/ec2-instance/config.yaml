@@ -3,4 +3,4 @@ context: {}
 remote_states:
   "network":
     organization: "fastcampus-devops"
-    workspace: "terraform-lab-network"
+    workspace: "terraform-lab-network"     # vpc 의 out put을 참조 
