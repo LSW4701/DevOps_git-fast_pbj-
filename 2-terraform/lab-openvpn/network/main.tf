@@ -1,7 +1,7 @@
 locals {
   common_tags = {
     Project = "Network"
-    Owner   = "posquit0"
+    Owner   = "lsw221019"  # 
   }
 }
 
