@@ -25,12 +25,12 @@ docker run \
  --detach=true \
  -p 1194:1194/udp \
  --cap-add=NET_ADMIN \
- -e "OVPN_SERVER_CN=15.165.253.212" \
+ -e "OVPN_SERVER_CN=${public_ip}" \
  -e "OVPN_ENABLE_COMPRESSION=false" \
  -e "OVPN_NETWORK=172.22.16.0 255.255.240.0" \
- -e "OVPN_ROUTES=172.22.16.0 255.255.240.0, 10.222.0.0 255.255.0.0" \
+ -e "OVPN_ROUTES=172.22.16.0 255.255.240.0, ${split("/", vpc_cidr)[0]} ${cidrnetmask(vpc_cidr)}" \
  -e "OVPN_NAT=true" \
- -e "OVPN_DNS_SERVERS= 10.222.0.2" \
+ -e "OVPN_DNS_SERVERS=${cidrhost(vpc_cidr, 2)}" \
  -e "USE_CLIENT_CERTIFICATE=true" \
  wheelybird/openvpn-ldap-otp:v1.6
  
