@@ -28,7 +28,7 @@ docker run \
  -e "OVPN_NAT=true" \
  -e "OVPN_DNS_SERVERS=${cidrhost(vpc_cidr, 2)}" \  #  vpc 10.222.0.0./24로 설정되어있는데    10.222.0.2   즉 2번째 IP는 내부 DNS 역할을 하며 , 내부DNS서버로 DNS 질의 가능 
  -e "USE_CLIENT_CERTIFICATE=true" \
- wheelybird/openvpn-ldap-otp:v1.4
+ wheelybird/openvpn-ldap-otp:v1.6    # 1.4 였는데 버전업 해서 1.6,  깃주소에서 확인 가능 
 
 ## Wait to ready OpenVPN Server  # wile 문 돌면서 기다림 
 until echo "$(docker exec openvpn show-client-config)" | grep -q "END PRIVATE KEY" ;
