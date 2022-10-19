@@ -1,6 +1,6 @@
 context:
   region: "apne2"
-  vpc: "apne2-openvpn" # 
+  vpc: "apne2-openvpn-lsw" # 
   cidrs:
     "primary": "10.222.0.0/16"
 
