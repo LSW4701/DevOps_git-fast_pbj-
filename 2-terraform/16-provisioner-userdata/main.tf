@@ -24,7 +24,7 @@ locals {
     "Project" = "provisioner-userdata"
   }
 }
-resource "aws_default_vpc" "default" {
+resource "aws_default_vpc" "default" {          # aws_default_vpc 해당 리소스는 aws 계정의 default vpc를 찾아준다. 
   tags = {
     Name = local.vpc_name
   }
@@ -86,7 +86,7 @@ resource "aws_instance" "userdata" {
 sudo apt-get update
 sudo apt-get install -y nginx
 EOT
-
+#  <<EOT  EOT     멀티라인 
   vpc_security_group_ids = [
     module.security_group.id,
   ]
@@ -97,33 +97,33 @@ EOT
 }
 
 
-###################################################
+# ################################################
 # Provisioner - in EC2
-###################################################
+# ##################################################
 
 # resource "aws_instance" "provisioner" {
 #   ami           = data.aws_ami.ubuntu.image_id
 #   instance_type = "t2.micro"
 #   key_name      = "fastcampus"
-#
+
 #   vpc_security_group_ids = [
 #     module.security_group.id,
 #   ]
-#
+
 #   tags = {
 #     Name = "fastcampus-provisioner"
 #   }
-#
+
 #   provisioner "remote-exec" {
 #     inline = [
 #       "sudo apt-get update",
 #       "sudo apt-get install -y nginx",
 #     ]
-#
+
 #     connection {
 #       type = "ssh"
 #       user = "ubuntu"
-#       host = self.public_ip
+#       host = self.public_ip  # 프로비저너 블록에서만 쓸 수 있는 변수로 부모리소스를 가르킴 즉 해당리소스 "provisioner"인스턴스 의 IP를 가져옴 
 #     }
 #   }
 # }
